@@ -1,0 +1,16 @@
+@media screen and (min-width: 992px){
+    .galerija{
+    height: 220px;
+    }
+}
+@media screen and (max-width: 991px) and (min-width: 768px){
+    .galerija{
+        height: 150px;
+        }
+        .slider1,.slider2,.slider3{
+            height:400px;
+        }
+}
+@media screen and (max-width: 426px){
+
+}

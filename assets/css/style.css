@@ -1,0 +1,62 @@
+.pocetna{
+    background-image: url("../images/kolacpocetna.jpg");
+    background-position: center;
+    background-size: cover;
+}
+.providnost{
+    background-color: rgba(248, 249, 250,0.9);
+}
+.navigacija{
+    background-color: rgb(255, 231, 212);
+}
+.navigacija-tamnija{
+    background-color: rgb(226, 192, 164);
+    padding: 1%;
+    text-align:center;
+    font-size: 20px;
+}
+.navigacija-tamnija p i{
+    margin: 0px 2%;
+}
+.navigacija-tamnija a{
+    color:rgb(0, 0, 0);
+}
+.autor{
+    width: 100%;
+}
+.autorka-p{
+    margin: 0px 2%;
+}
+.autorka-p ul li a{
+color:rgb(0, 0, 0);
+}
+.autorka-p ul li a:hover{
+text-decoration: none;
+    }
+.autorka{
+    margin: 10px auto;
+}
+.slider1{
+    background-image: url("../images/pravljenjekolaca1.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+}
+.slider2{
+    background-image: url("../images/pravljenjekolaca2.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+}
+.slider3{
+    background-image: url("../images/pravljenjekolaca3.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 300px;
+}
+.kontakt ul{
+    padding: 5%;
+}
+.kontakt ul li{
+    padding: 4%;
+}
