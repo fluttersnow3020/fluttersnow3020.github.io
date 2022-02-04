@@ -1,5 +1,22 @@
-var kategorija,kolaci;
+var kategorija,kolaci,meni;
 window.onload = function(){
+    meni = [
+		{
+			"id": 1,
+			"title": "Početna",
+			"link": "index.html"
+		},
+		{
+			"id": 2,
+			"title": "Galerija",
+			"link": "galerija.html"
+		},
+		{
+			"id": 3,
+			"title": "Autorka",
+			"link": "autorka.html"
+		}
+	];
     kategorija = [
         {
             "id": 1,
@@ -123,7 +140,8 @@ window.onload = function(){
                 "alt": "Klasičan mix posnih sitnih kolača za sve prilike"
             }
         },
-    ]
+    ];
+    IspisMenija(2);
     IspisProizvoda(kolaci);
     $('#tip').change(filterTip);
     $('#posno').change(filterPosno);
@@ -175,3 +193,20 @@ function filterPosno(){
     );
 IspisProizvoda(filtriraniProizvodi);
 };
+function IspisMenija(activeid){
+const navDiv = document.getElementById("meni");
+let html = ' ';
+for(let i=0; i < meni.length; i++){
+    if(i==(activeid-1)){
+    html+=`<li class="nav-item active">
+            <a class="nav-link" href="${meni[i]['link']}">${meni[i]['title']}</a>
+          </li>`;
+    }
+    else{
+        html+=`<li class="nav-item">
+        <a class="nav-link" href="${meni[i]['link']}">${meni[i]['title']}</a>
+      </li>`
+    }
+}
+navDiv.innerHTML = html;
+}
