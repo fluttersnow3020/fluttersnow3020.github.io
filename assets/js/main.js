@@ -125,8 +125,8 @@ window.onload = function(){
         },
     ]
     IspisProizvoda(kolaci);
-    $('#tip').change(filterTip());
-    $('#Posno').change(filterPosno());
+    $('#tip').change(filterTip);
+    $('#posno').change(filterPosno);
 };
 function IspisProizvoda(kolaci){
     const kolaciDiv = document.querySelector('#kolaci');
@@ -150,7 +150,7 @@ function filterTip(){
             IspisProizvoda(kolaci);;
             return;
         }
-        let filtriraniProizvodi = products.filter(function(e){
+        let filtriraniProizvodi = kolaci.filter(function(e){
             if(tip == "1"){
                 if(e.kategorija==1) return true;
             }else if(tip == "2"){
@@ -166,7 +166,7 @@ function filterPosno(){
         IspisProizvoda(kolaci);;
         return;
     }
-    let filtriraniProizvodi = products.filter(function(e){
+    let filtriraniProizvodi = kolaci.filter(function(e){
         if(tip == "1"){
             if(e.posno==true) return true;
         }
