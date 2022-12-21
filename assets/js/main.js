@@ -209,4 +209,65 @@ for(let i=0; i < meni.length; i++){
     }
 }
 navDiv.innerHTML = html;
+};
+function proveraForme(){
+const forma = document.querySelector('#kontaktforma');
+const ime = document.querySelector('#Ime');
+const imejl = document.querySelector('#Imejl');
+const poruka = document.querySelector('#Poruka');
+const slanje = document.querySelector('#slanje');
+const prikaz = document.querySelector('#prikaz');
+const proveriIme = () => {
+    let ime = document.querySelector('#Ime');
+    let imeExpression = /^[A-ZČĆŽĐŠ][a-zćčžđš]{1,14}\s([A-ZČĆŽĐŠ][a-zćčžđš]{1,14})?\s?[A-ZČĆŽŠĐ][a-zćčžđš]{1,19}$/;
+    imeFieldValue = ime.value;
+    return checkRegEx(imeExpression, imeFieldValue, ime);
+    };
+const proveriMejl = () => {
+        let imejl = document.querySelector('#Imejl');
+        let mejlExpression = /^[a-zA-Z0-9]([a-z]|[0-9])+\.?-?_?([a-z]|[0-9])*\.?([a-z]|[0-9])*\@[a-z]{3,}\.([a-z]{2,4}\.)?([a-z]{2,4})$/;
+        mejlFieldValue = imejl.value;
+        return checkRegEx(mejlExpression, mejlFieldValue, imejl);
+        };
+const proveriPoruku = () => {
+            if(poruka.value == '' || poruka.value == null ||
+            poruka.value.length == 0) {
+            fieldInvalid(textField, "Poruka ne može da bude prazna");
+            return 0;
+            } else {
+            fieldValid(poruka);
+            return 1;
+            }
+            };
+            const proveriDugme = () => {
+                if(proveriIme() && proveriMejl() && proveriPoruku()) {
+                if(slanje.classList.contains('btn-danger')) {
+                slanje.classList.remove('btn-danger');
+                slanje.classList.add('btn-success');
+                } else {
+                slanje.classList.add('btn-success');
+                }
+                return 1;
+                } else {
+                if(slanje.classList.contains('btn-success')) {
+                slanje.classList.remove('btn-success');
+                slanje.classList.add('btn-danger');
+                } else {
+                slanje.classList.add('btn-danger');
+                }
+                return 0;
+                }
+                };
+
+                poruka.addEventListener('keyup', proveriPoruku);
+                imejl.addEventListener('keyup', proveriMejl);
+                ime.addEventListener('keyup', proveriIme);
+                slanje.addEventListener('click',(event) => {
+                    if(proveriDugme){
+                        prikaz.innerHTML = '<p>uspesno slanje poruke</p>';
+                    }
+                    else{
+                        prikaz.innerHTML = '<p>molim vas, proverite formu</p>';
+                    }
+                });
 }
