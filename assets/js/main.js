@@ -1,4 +1,4 @@
-var kategorija,kolaci,meni;
+var kategorija,kolaci,meni,idstrane,linkstrane;
 window.onload = function(){
     meni = [
 		{
@@ -141,10 +141,23 @@ window.onload = function(){
             }
         },
     ];
+    linkstrane = window.location.pathname;
+    console.log(linkstrane);
+if(linkstrane == '/index.html'){
+    IspisMenija(1);
+    proveraForme();
+}
+else if(linkstrane == '/galerija.html'){
     IspisMenija(2);
     IspisProizvoda(kolaci);
     $('#tip').change(filterTip);
     $('#posno').change(filterPosno);
+}
+else{
+    IspisMenija(3);
+    proveraForme();
+};
+
 };
 function IspisProizvoda(kolaci){
     const kolaciDiv = document.querySelector('#kolaci');
@@ -232,7 +245,7 @@ const proveriMejl = () => {
 const proveriPoruku = () => {
             if(poruka.value == '' || poruka.value == null ||
             poruka.value.length == 0) {
-            fieldInvalid(textField, "Poruka ne može da bude prazna");
+            fieldInvalid(poruka, "Poruka ne može da bude prazna");
             return 0;
             } else {
             fieldValid(poruka);
@@ -263,11 +276,37 @@ const proveriPoruku = () => {
                 imejl.addEventListener('keyup', proveriMejl);
                 ime.addEventListener('keyup', proveriIme);
                 slanje.addEventListener('click',(event) => {
-                    if(proveriDugme){
+                    if(proveriDugme()){
                         prikaz.innerHTML = '<p>uspesno slanje poruke</p>';
                     }
                     else{
                         prikaz.innerHTML = '<p>molim vas, proverite formu</p>';
                     }
                 });
+                function fieldValid(field) {
+                    if(field.classList.contains('is-invalid')) {
+                    field.classList.remove('is-invalid')
+                    field.classList.add('is-valid')
+                    } else {
+                    field.classList.add('is-valid')
+                    }
+                    }
+                    function fieldInvalid(field, text) {
+                    if(field.classList.contains('is-valid')) {
+                    field.classList.remove('is-valid')
+                    field.classList.add('is-invalid')
+                    } else {
+                    field.classList.add('is-invalid')
+                    }
+                    field.innerText = `${text}`
+                    }
+                    const checkRegEx = (expression, fieldValue, field) => {
+                    if(expression.test(String(fieldValue))) {
+                    fieldValid(field)
+                    return 1 
+                    } else {
+                    fieldInvalid(field, `Proverite sadrzaj polja`)
+                    return 0 
+                    }
+                    }
 }
